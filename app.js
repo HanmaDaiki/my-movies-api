@@ -21,8 +21,6 @@ app.use("/api", rootRoute);
 
 app.use(errorHandler);
 
-app.use(errors());
-
 app.listen(PORT, () => {
   console.log(`Server start! PORT: ${PORT}`);
 });
