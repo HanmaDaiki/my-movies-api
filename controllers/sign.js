@@ -13,21 +13,7 @@ module.exports.signUp = (req, res, next) => {
   bcrypt.hash(password, 10)
     .then((hash) => {
       User.create({ email, password: hash, name })
-        .then(() => res.send({ message: 'Registration has been successfully completed' }))
-        .catch((err) => {
-          if (err.name === 'ValidationError') {
-            return Promise.reject(new BadRequestError('Invalid data sent for create new user'));
-          }
-
-          if (err.code === 11000) {
-            return Promise.reject(new TakenError('Email is taken'));
-          }
-
-          return next();
-        })
-        .catch((err) => {
-          next(err);
-        });
+        .then(() => res.send({ message: 'Registration has been successfully completed' }));
     });
 };
 
@@ -43,6 +29,5 @@ module.exports.signIn = (req, res, next) => {
       );
 
       res.send({ token });
-    })
-    .catch((err) => next(err));
+    });
 };

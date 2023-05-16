@@ -18,8 +18,7 @@ module.exports.getUserInfo = (req, res, next) => {
         email: user.email,
         name: user.name,
       });
-    })
-    .catch((err) => next(err));
+    });
 };
 
 module.exports.patchUserInfo = (req, res, next) => {
@@ -36,20 +35,5 @@ module.exports.patchUserInfo = (req, res, next) => {
         email: user.email,
         name: user.name,
       });
-    })
-    .catch((err) => {
-      if (err.code === 11000) {
-        return next(new TakenError('Email is taken'));
-      }
-
-      if (err.name === 'ValidationError') {
-        return next(new BadRequestError());
-      }
-
-      if (err.name === 'CastError') {
-        return next(new NotFoundError('User Not Found'));
-      }
-
-      return next(err);
     });
 };
