@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const BadRequestError = require('../errors/BadRequestError');
 const TakenError = require('../errors/TakenError');
 const User = require('../models/user');
+const {JWT_SECRET} = process.env;
 
 module.exports.signUp = (req, res, next) => {
   const { email, password, name } = req.body;
