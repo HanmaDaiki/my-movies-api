@@ -3,6 +3,7 @@ const { celebrate, Joi } = require('celebrate');
 const { signUp, signIn } = require('../controllers/sign');
 const auth = require('../middlewares/auth');
 const users = require('./users');
+const movies = require('./movies');
 const NotFoundError = require('../errors/NotFoudError');
 
 router.post('/signup', celebrate({
@@ -20,6 +21,8 @@ router.post('/signin', celebrate({
 }), signIn);
 
 router.use('/users', auth, users);
+router.use('/movies', auth, movies);
+
 router.use(auth, (req, res, next) => {
   next(new NotFoundError('Page Not Found'));
 });
