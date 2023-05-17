@@ -1,6 +1,5 @@
 const allowedCors = [
-  'https://daikihanma.films.nomoredomains.icu',
-  'http://daikihanma.films.nomoredomains.icu',
+  'https://movies-explore.vercel.app',
   'http://localhost:3000',
   'http://127.0.0.1:5173'
 ];
