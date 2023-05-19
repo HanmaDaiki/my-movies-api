@@ -25,20 +25,8 @@ const movieSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true,
-    validate: {
-      validator: (v) => isURL(v),
-      message: 'The URL format is incorrect',
-    },
   },
   trailerLink: {
-    type: String,
-    required: true,
-    validate: {
-      validator: (v) => isURL(v),
-      message: 'The URL format is incorrect',
-    },
-  },
-  thumbnail: {
     type: String,
     required: true,
     validate: {
